@@ -1,5 +1,8 @@
 name: 'CalVer Tag Create and Push'
 description: 'Creates a unique version tag and pushes it'
+branding:
+  icon: tag
+  color: green
 outputs:
   new_version:
     description: Generated version
