@@ -9,4 +9,4 @@ runs:
   steps:
     - id: tag-and-push
       shell: bash
-      run: tag-and-push.sh
+      run: sh ./tag-and-push.sh
