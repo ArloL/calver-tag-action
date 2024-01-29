@@ -1,5 +1,5 @@
-name: 'CalVer Tag'
-description: 'Creates a unique version and pushes a tag with it'
+name: 'CalVer Tag Create and Push'
+description: 'Creates a unique version tag and pushes it'
 outputs:
   version:
     description: Generated version
