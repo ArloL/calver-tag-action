@@ -1,9 +1,9 @@
 name: 'CalVer Tag Create and Push'
 description: 'Creates a unique version tag and pushes it'
 outputs:
-  version:
+  new_version:
     description: Generated version
-    value: ${{ steps.tag-and-push.outputs.version }}
+    value: ${{ steps.tag-and-push.outputs.new_version }}
 runs:
   using: "composite"
   steps:

@@ -14,4 +14,4 @@ for MICRO in $(seq 100 999); do
     fi
 done
 
-echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+echo "new_version=${VERSION}" >> "$GITHUB_OUTPUT"
