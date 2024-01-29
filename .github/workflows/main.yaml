@@ -20,9 +20,15 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' }}
     steps:
     - uses: actions/checkout@v4.1.1
-    - if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' }}
+    - id: tag-and-push
       run: sh ./tag-and-push.sh
+    - name: Create Release
+      uses: ncipollo/release-action@v1.13.0
+      with:
+        tag: v${{ steps.tag-and-push.outputs.new_version }}
+        name: Release ${{ steps.tag-and-push.outputs.new_version }}
     - name: Make sure build did not change anything
       run: git diff --exit-code
