@@ -1,0 +1,28 @@
+name: Main
+
+on:
+  push:
+  schedule:
+  - cron: '18 10 19 * *'
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Debug context and environment variables
+      env:
+        GITHUB_CONTEXT: ${{ toJSON(github) }}
+        JOB_CONTEXT: ${{ toJSON(job) }}
+        STEPS_CONTEXT: ${{ toJSON(steps) }}
+        RUNNER_CONTEXT: ${{ toJSON(runner) }}
+      run: set
+  version:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4.1.1
+    - if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' }}
+      run: sh ./tag-and-push.sh
+    - name: Make sure build did not change anything
+      run: git diff --exit-code
