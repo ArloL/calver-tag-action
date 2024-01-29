@@ -1,0 +1,12 @@
+name: 'CalVer Tag'
+description: 'Creates a unique version and pushes a tag with it'
+outputs:
+  version:
+    description: Generated version
+    value: ${{ steps.tag-and-push.outputs.version }}
+runs:
+  using: "composite"
+  steps:
+    - id: tag-and-push
+      shell: bash
+      run: tag-and-push.sh
