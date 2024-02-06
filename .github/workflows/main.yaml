@@ -26,7 +26,7 @@ jobs:
     - id: tag-and-push
       uses: ./
     - name: Create Release
-      uses: ncipollo/release-action@v1.13.0
+      uses: ncipollo/release-action@v1.14.0
       with:
         tag: v${{ steps.tag-and-push.outputs.new_version }}
         name: Release ${{ steps.tag-and-push.outputs.new_version }}
