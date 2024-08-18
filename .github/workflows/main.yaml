@@ -35,7 +35,7 @@ jobs:
       run: echo "$MATRIX_CONTEXT"
     - name: Dump environment variables
       run: set
-  version:
+  release:
     permissions:
       contents: write
     runs-on: ubuntu-latest
