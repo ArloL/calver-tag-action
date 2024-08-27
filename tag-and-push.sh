@@ -13,7 +13,7 @@ for MICRO in $(seq 101 999); do
         exit 1
     fi
     VERSION=${MAJOR_MINOR}.0.${MICRO}
-    if git tag "v${VERSION}" "${GITHUB_REF}" && git push origin "refs/tags/v${VERSION}"; then
+    if git tag "v${VERSION}" "${GITHUB_SHA}" && git push origin "refs/tags/v${VERSION}"; then
         break
     fi
 done
