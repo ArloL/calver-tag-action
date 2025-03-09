@@ -44,7 +44,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4.2.2
       with:
-        persist-credentials: false
+        persist-credentials: true
     - id: tag-and-push
       uses: ./
     - name: Create Release
