@@ -3,7 +3,7 @@ name: Main
 on:
   push:
   schedule:
-  - cron: '18 10 19 * *'
+  - cron: "18 10 19 * *"
 permissions: {}
 
 jobs:
@@ -50,7 +50,7 @@ jobs:
     - name: Create Release
       uses: ncipollo/release-action@b7eabc95ff50cbeeedec83973935c8f306dfcd0b # v1.20.0
       with:
-        tag: v${{ steps.tag-and-push.outputs.new_version }}
         name: Release ${{ steps.tag-and-push.outputs.new_version }}
+        tag: v${{ steps.tag-and-push.outputs.new_version }}
     - name: Make sure build did not change anything
       run: git diff --exit-code
