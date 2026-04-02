@@ -50,7 +50,7 @@ jobs:
     - name: Create Release
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NEW_VERSION:  ${{ steps.tag-and-push.outputs.new_version }}
+        NEW_VERSION: ${{ steps.tag-and-push.outputs.new_version }}
       run: |
         gh release create "v${NEW_VERSION}" \
           --title "Release ${NEW_VERSION}"
