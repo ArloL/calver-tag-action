@@ -2,6 +2,11 @@ name: Main
 
 on:
   push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
   schedule:
   - cron: "18 10 19 * *"
 permissions: {}
@@ -37,7 +42,7 @@ jobs:
     - name: Dump environment variables
       run: set
   release:
-    if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
