@@ -16,11 +16,13 @@ for MICRO in $(seq 101 999); do
     if git tag "v${VERSION}" "${GITHUB_SHA}"; then
         if git push origin "refs/tags/v${VERSION}"; then
             break
-        else
-            git tag -d "v${VERSION}" 2>/dev/null || true
-            git ls-remote --tags origin "v${MAJOR_MINOR}.*"
-            git fetch origin --prune --force "+refs/tags/v${MAJOR_MINOR}.*:refs/tags/v${MAJOR_MINOR}.*"
         fi
+        git tag -d "v${VERSION}"
+        if ! git ls-remote --exit-code --tags origin "refs/tags/v${VERSION}"; then
+            echo "Push failed and v${VERSION} does not exist on origin"
+            exit 1
+        fi
+        git fetch origin --prune --force "+refs/tags/v${MAJOR_MINOR}.*:refs/tags/v${MAJOR_MINOR}.*"
     fi
 done
 
